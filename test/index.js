@@ -76,3 +76,19 @@ test.cb('throws if options are invalid', (t) => {
     }
   })
 })
+
+test.cb('passes the filename through the build', (t) => {
+  const p = path.join(fixturesPath, 'filename')
+  webpack({
+    context: p,
+    entry: path.join(p, 'app.js'),
+    output: { path: p },
+    resolveLoader: { root: path.resolve('..') },
+    module: { loaders: [{ test: /\.jade$/, loader: 'lib' }] }
+  }, (err, stats) => {
+    if (err) { t.end(err) }
+    const src = fs.readFileSync(path.join(p, 'bundle.js'), 'utf8')
+    t.ok(src.match('index'))
+    rimraf(path.join(p, 'bundle.js'), t.end)
+  })
+})
