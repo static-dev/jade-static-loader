@@ -22,6 +22,24 @@ test.cb('compiles a jade template', (t) => {
   })
 })
 
+test.cb('compiles a jade template + tracks dependencies', (t) => {
+  const p = path.join(fixturesPath, 'dependencies')
+  webpack({
+    context: p,
+    entry: path.join(p, 'app.js'),
+    output: { path: p },
+    resolveLoader: { root: path.resolve('..') },
+    module: { loaders: [{ test: /\.jade$/, loader: 'lib' }] }
+  }, (err, stats) => {
+    if (err) { t.end(err) }
+    const src = fs.readFileSync(path.join(p, 'bundle.js'), 'utf8')
+    t.regex(src, /<p>from partial<\/p>/)
+    const dep = stats.compilation.fileDependencies[0]
+    t.regex(dep, /_partial.jade/)
+    rimraf(path.join(p, 'bundle.js'), t.end)
+  })
+})
+
 test.cb('accepts locals through options object', (t) => {
   const p = path.join(fixturesPath, 'locals')
   webpack({
