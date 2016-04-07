@@ -1,6 +1,6 @@
 {
   "name": "jade-static-loader",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "webpack loader that compiles jade to static html",
   "main": "lib",
   "scripts": {
