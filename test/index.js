@@ -17,7 +17,7 @@ test.cb('compiles a jade template', (t) => {
   }, (err, stats) => {
     if (err) { t.end(err) }
     const src = fs.readFileSync(path.join(p, 'bundle.js'), 'utf8')
-    t.ok(src.match('<p>hello world</p>'))
+    t.truthy(src.match('<p>hello world</p>'))
     rimraf(path.join(p, 'bundle.js'), t.end)
   })
 })
@@ -52,7 +52,7 @@ test.cb('accepts locals through options object', (t) => {
   }, (err, stats) => {
     if (err) { t.end(err) }
     const src = fs.readFileSync(path.join(p, 'bundle.js'), 'utf8')
-    t.ok(src.match('bar'))
+    t.truthy(src.match('bar'))
     rimraf(path.join(p, 'bundle.js'), t.end)
   })
 })
@@ -69,7 +69,7 @@ test.cb('throws if options are invalid', (t) => {
   }, (_, stats) => {
     if (stats.compilation.errors) {
       const err = stats.compilation.errors[0].toString()
-      t.ok(err.match('"locals" must be an object'))
+      t.truthy(err.match('"locals" must be an object'))
       t.end()
     } else {
       t.end('no error present with invalid options')
