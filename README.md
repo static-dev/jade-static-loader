@@ -1,6 +1,6 @@
 # Jade Static Loader
 
-[![npm](http://img.shields.io/npm/v/jade-static-loader.svg?style=flat)](https://badge.fury.io/js/jade-static-loader) [![tests](http://img.shields.io/travis/carrot/jade-static-loader/master.svg?style=flat)](https://travis-ci.org/carrot/jade-static-loader) [![dependencies](http://img.shields.io/gemnasium/carrot/jade-static-loader.svg?style=flat)](https://gemnasium.com/carrot/jade-static-loader)
+[![npm](http://img.shields.io/npm/v/jade-static-loader.svg?style=flat)](https://badge.fury.io/js/jade-static-loader) [![tests](http://img.shields.io/travis/static-dev/jade-static-loader/master.svg?style=flat)](https://travis-ci.org/static-dev/jade-static-loader) [![dependencies](http://img.shields.io/gemnasium/static-dev/jade-static-loader.svg?style=flat)](https://gemnasium.com/static-dev/jade-static-loader)
 
 Webpack loader that compiles jade to static html
 
@@ -8,7 +8,7 @@ Webpack loader that compiles jade to static html
 
 ### Why should you care?
 
-This loader is intended to be used in situations where you want webpack to render a static html file rather than a client side template. It's written by the authors of [roots-mini](https://github.com/carrot/roots-mini), a static website engine with webpack at the core.
+This loader is intended to be used in situations where you want webpack to render a static html file rather than a client side template. It's written by the authors of [spike](https://github.com/static-dev/spike), a static website engine with webpack at the core.
 
 If you are looking for a simple, solid, and well maintained webpack loader that renders out jade as html, you have come to the right place.
 
@@ -37,7 +37,7 @@ module.exports = {
 }
 ```
 
-The loader simply returns a string containing the compiled html. Now you also probably would want to extract out the resulting code and write it to an html file, rather than letting it chill in your javascript output, but that's not part of what a loader can do, so use some plugins or maybe roots-mini for this instead.
+The loader simply returns an export of a string containing the compiled html. Now you also probably would want to extract out the resulting code and write it to an html file, rather than letting it chill in your javascript output, but that's not part of what a loader can do, so use some plugins or maybe spike for this instead.
 
 ### License & Contributing
 
