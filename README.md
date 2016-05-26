@@ -1,6 +1,7 @@
 # Jade Static Loader
 
 [![npm](http://img.shields.io/npm/v/jade-static-loader.svg?style=flat)](https://badge.fury.io/js/jade-static-loader) [![tests](http://img.shields.io/travis/static-dev/jade-static-loader/master.svg?style=flat)](https://travis-ci.org/static-dev/jade-static-loader) [![dependencies](http://img.shields.io/david/static-dev/jade-static-loader.svg?style=flat)](https://david-dm.org/static-dev/jade-static-loader)
+[![coverage](http://img.shields.io/coveralls/static-dev/jade-static-loader.svg?style=flat)](https://coveralls.io/github/static-dev/jade-static-loader)
 
 Webpack loader that compiles jade to static html
 
@@ -38,6 +39,8 @@ module.exports = {
 ```
 
 The loader simply returns an export of a string containing the compiled html. Now you also probably would want to extract out the resulting code and write it to an html file, rather than letting it chill in your javascript output, but that's not part of what a loader can do, so use some plugins or maybe spike for this instead.
+
+This loader also exposes the source of the original jade files internally for plugins to access, using the `_src` property of each webpack module object.
 
 ### License & Contributing
 

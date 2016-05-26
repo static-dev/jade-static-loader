@@ -1,35 +1,29 @@
 {
   "name": "jade-static-loader",
-  "version": "0.1.0",
   "description": "webpack loader that compiles jade to static html",
-  "main": "lib",
-  "scripts": {
-    "test": "ava"
-  },
-  "author": "carrot",
-  "license": "MIT",
-  "babel": {
-    "presets": [
-      "es2015-node5"
-    ]
-  },
-  "devDependencies": {
-    "ava": "0.14.x",
-    "babel-cli": "6.x",
-    "babel-core": "6.x",
-    "babel-preset-es2015": "6.x",
-    "rimraf": "^2.5.2",
-    "standard": "7.x",
-    "webpack": "^1.12.14"
-  },
+  "version": "0.1.0",
+  "author": "Jeff Escalante",
   "ava": {
-    "require": [
-      "babel-core/register"
-    ],
     "verbose": "true"
   },
   "dependencies": {
     "jade": "^1.11.0",
     "joi": "^8.0.5"
+  },
+  "devDependencies": {
+    "ava": "^0.15.1",
+    "coveralls": "^2.11.9",
+    "nyc": "^6.4.4",
+    "rimraf": "^2.5.2",
+    "standard": "7.x",
+    "webpack": "^1.13.1"
+  },
+  "license": "MIT",
+  "main": "lib",
+  "scripts": {
+    "coverage": "nyc ava",
+    "coveralls": "nyc --reporter=lcov ava && cat ./coverage/lcov.info | coveralls",
+    "lint": "standard",
+    "test": "ava"
   }
 }
