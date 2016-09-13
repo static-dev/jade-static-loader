@@ -13,7 +13,7 @@ test.cb('compiles a jade template', (t) => {
     entry: path.join(p, 'app.js'),
     output: { path: p },
     resolveLoader: { root: path.resolve('..') },
-    module: { loaders: [{ test: /\.jade$/, loader: 'lib' }] }
+    module: { loaders: [{ test: /\.jade$/, loader: 'source!lib' }] }
   }, (err, stats) => {
     if (err) { t.end(err) }
     const src = fs.readFileSync(path.join(p, 'bundle.js'), 'utf8')
@@ -29,7 +29,7 @@ test.cb('compiles a jade template + tracks dependencies', (t) => {
     entry: path.join(p, 'app.js'),
     output: { path: p },
     resolveLoader: { root: path.resolve('..') },
-    module: { loaders: [{ test: /\.jade$/, loader: 'lib' }] }
+    module: { loaders: [{ test: /\.jade$/, loader: 'source!lib' }] }
   }, (err, stats) => {
     if (err) { t.end(err) }
     const src = fs.readFileSync(path.join(p, 'bundle.js'), 'utf8')
@@ -47,7 +47,7 @@ test.cb('accepts locals through options object', (t) => {
     entry: path.join(p, 'app.js'),
     output: { path: p },
     resolveLoader: { root: path.resolve('..') },
-    module: { loaders: [{ test: /\.jade$/, loader: 'lib' }] },
+    module: { loaders: [{ test: /\.jade$/, loader: 'source!lib' }] },
     jade: { locals: { foo: () => 'bar' } }
   }, (err, stats) => {
     if (err) { t.end(err) }
@@ -64,7 +64,7 @@ test.cb('throws if options are invalid', (t) => {
     entry: path.join(p, 'app.js'),
     output: { path: p },
     resolveLoader: { root: path.resolve('..') },
-    module: { loaders: [{ test: /\.jade$/, loader: 'lib' }] },
+    module: { loaders: [{ test: /\.jade$/, loader: 'source!lib' }] },
     jade: { locals: 'wow' }
   }, (_, stats) => {
     if (stats.compilation.errors) {

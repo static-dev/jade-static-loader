@@ -15,6 +15,7 @@
     "coveralls": "^2.11.9",
     "nyc": "^6.4.4",
     "rimraf": "^2.5.2",
+    "source-loader": "^0.2.0",
     "standard": "7.x",
     "webpack": "^1.13.1"
   },

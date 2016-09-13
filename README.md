@@ -15,7 +15,7 @@ If you are looking for a simple, solid, and well maintained webpack loader that 
 
 ### Installation
 
-`npm i jade-static-loader -S`
+`npm i source-loader jade-static-loader -S`
 
 ### Usage
 
@@ -28,7 +28,7 @@ So instead, this loader pulls settings directly from the webpack options, from t
 module.exports = {
   module: {
     loaders: [
-      { test: /\.jade$/, loader: 'jade-static' }
+      { test: /\.jade$/, loader: 'source!jade-static' }
     ]
   },
   jade: {
@@ -38,9 +38,7 @@ module.exports = {
 }
 ```
 
-The loader simply returns an export of a string containing the compiled html. Now you also probably would want to extract out the resulting code and write it to an html file, rather than letting it chill in your javascript output, but that's not part of what a loader can do, so use some plugins or maybe spike for this instead.
-
-This loader also exposes the source of the original jade files internally for plugins to access, using the `_src` property of each webpack module object.
+The loader simply returns a string containing the compiled html. This means that **it cannot be used directly with webpack and requires a second loader**. If you are looking to simply export the raw source as a string so that it can be required by your js, you can use it with [source-loader](https://github.com/static-dev/source-loader) as shown in the above example. You also might want to extract out the resulting code and write it to an html file, rather than letting it chill in your javascript output, but that's not part of what a loader can do, so use a plugin or maybe spike for this instead.
 
 ### License & Contributing
 
